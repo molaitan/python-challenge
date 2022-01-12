@@ -32,32 +32,43 @@ percentages=[]
 max_votes= voter_count[0]
 max_index=0
 
+#find percentages of candidates, find winner
 for count in range(len(candidate_list)):
     vote_percentage= voter_count[count]/num_votes*100
     percentages.append(vote_percentage)
 
     if voter_count[count]> max_votes:
         max_votes=voter_count[count]
-        print(max_votes)
         max_index=count
 winner=candidate_list[max_index]
 
+#print results to terminal
+print("Election Results")
+print("-----------------------------")
+print(f"Total Votes: {num_votes}\n")
+print("-----------------------------")
+for count in range(len(candidate_list)):
+    print(f"{candidate_list[count]}:{percentages[count]:.2f}% ({voter_count[count]})\n")
+print("-----------------------------")
+print(f"Winner:  {winner}\n")
 
 
 #specify file to write results to
 output_path = os.path.join("Analysis","output.txt")
 
+#break down output data
 output_1 = (  f"Election Results\n"
             f"------------------------------\n"
             f"Total Votes: {num_votes}\n"
             f"------------------------------\n")
-output_2 =  (f"{candidate_list[count]}:{percentages[count]:.2f}% ({voter_count[count]})\n")
+#output_2 =  (f"{candidate_list[count]}:{percentages[count]:.2f}% ({voter_count[count]})\n")
 output_3 =  (f"------------------------------\n"
             f"Winner:  {winner}\n"
             f"------------------------------\n")
 
+#write output data to text file
 with open(output_path, "w") as txt_file:
-   txt_file.write(output_1)
-   for count in range(len(candidate_list)):
-        txt_file.write(output_2)
-   txt_file.write(output_3)
+    txt_file.write(output_1)
+    for count in range(len(candidate_list)):
+        txt_file.write(f"{candidate_list[count]}:{percentages[count]:.2f}% ({voter_count[count]})\n")
+    txt_file.write(output_3)

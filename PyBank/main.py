@@ -39,12 +39,21 @@ with open(csvpath) as csvfile:
     increase_date=date[profit_loss.index(greatest_increase)+1]
     decrease_date=date[profit_loss.index(greatest_decrease)+1]
 
-    print(total_mo)
-    print(total_money)
-    print(greatest_increase)
-    print(greatest_decrease)
-    print(increase_date)
-    print(decrease_date)
+    #print results to terminal
+    # print(total_mo)
+    # print(total_money)
+    # print(greatest_increase)
+    # print(greatest_decrease)
+    # print(increase_date)
+    # print(decrease_date)
+
+    print("Financial Analysis")
+    print("-----------------------------")
+    print(f"Total Months: {total_mo}\n")
+    print(f"Total Money: ${total_money}\n")
+    print(f"Average Change:  ${average_change:.2f}\n")
+    print(f"Greatest Increase in Profits:  {increase_date} (${greatest_increase})\n")
+    print(f"Greatest Decrease in Profits:  {decrease_date} (${greatest_decrease})\n" )
 
 
 #specify file to write results to
